@@ -1,6 +1,7 @@
 ﻿function Read-StoredKeyList{
+    [CmdletBinding()]
     Param()
-    (Get-Item HKCU:\Software\Microsoft\Windows\PowerShell\Keys).GetValueNames()
+    Get-Item HKCU:\Software\Microsoft\Windows\PowerShell\Keys -ErrorAction SilentlyContinue | % { $_.GetValueNames() }
 }
 
 function Get-StoredKey {
